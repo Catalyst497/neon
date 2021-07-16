@@ -1,0 +1,58 @@
+body{
+	margin-top: 6em;
+}
+h4 #logo {
+	display: inline-block;
+}
+#big{
+	display: inline-block;
+	box-shadow: 2px 4px 20px #dedad1;
+	/*height: 5em;*/
+}
+
+.imga{
+    /*float: left;*/
+    width:  220px;
+    height: 150px;
+    border-radius: 2%;
+    background-size: cover;
+}
+.img{
+    /*float: left;*/
+    width:  270px;
+    height: 220px;
+    border-radius: 2%;
+    background-size: cover;
+}
+.social{
+	margin-left:7em;
+}
+.block{
+	display: block;
+}
+.line{
+	display: inline-block;
+	margin-right: 1em
+}
+#large{
+	font-size: xx-large;
+	/*filter: invert(1);*/
+}
+.list{
+	margin-top: 50px;
+	margin-right:4em;
+	margin-bottom: 0;
+	margin-left: 4em;
+}
+@media only screen and (max-width: 1000px) {
+  .list {
+    display: none;
+  }
+}
+#a{
+	color: #49b5e7
+}
+/*body{
+	background: black;
+	color : #000;
+}*/
