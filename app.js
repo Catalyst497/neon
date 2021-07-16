@@ -24,6 +24,6 @@ app.get("/login", function(req,res){
 app.post("/login", function(req,res){
 
 })
-app.listen("400", function(){
+app.listen("400" || process.env.port, function(){
     console.log("You are welcome to naija")
 });
