@@ -2,28 +2,65 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-// const URL = "mongodb+srv://Catalyst:Dan@12345678@neon.zfvqp.mongodb.net/Neon?retryWrites=true&w=majority";
-// mongoose.connect(URL ,
-//     {
-//         useNewUrlParser: true, useUnifiedTopology: true
-//     });
+var passport = require('passport');
+var multer = require('multer');
+var Images = require("./models/images");
+var User = require("./models/users.js");
+var upload = require("./models/multer");
+var MongoStore = require("connect-mongo");
+var connectEnsureLogin = require('connect-ensure-login');
+var flash = require("connect-flash");
 
+
+var fs = require('fs');
+var path = require('path');
+require('dotenv/config');
+
+const URL = "mongodb+srv://Catalyst:Randomshap197@neon.chpcu.mongodb.net/Neon?retryWrites=true&w=majority";
+mongoose.connect(URL ,
+    {
+        useNewUrlParser: true, useUnifiedTopology: true
+    })
+
+mongoose.set('useFindAndModify', false);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
+var sessionStore = MongoStore.create({
+    mongoUrl: URL,
+    collection: "sessions"
+});
+var expressSession = require('express-session')({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie:{
+            maxAge: 1000 * 60 * 60 * 5
+        }
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressSession);
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use(flash());
+app.use(function(req,res,next){
+   res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    next();
+});
 
 //Routes
-app.get("/", function (req,res){
-    res.render("Home Page" );
-});
-app.get("/gallery", function(req,res){
-	res.render("Gallery");
-})
-app.get("/login", function(req,res){
-	res.render("login");
-})
-app.post("/login", function(req,res){
+var routes = require("./routes/index");
+app.use(routes);
 
-})
-app.listen("400" || process.env.port, function(){
+
+
+app.listen( process.env.port || 400 , function(){
     console.log("You are welcome to naija")
 });

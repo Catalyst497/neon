@@ -1,0 +1,37 @@
+<%- include("partials/header") %>
+
+<form action="/edit" method="POST" enctype="multipart/form-data">
+	<div>
+		<p>        
+			<label for="image">Upload Image</label>
+</p>
+		<p>        
+			<input type="file" id="image" name="image" required>
+</p>
+		<p>        
+			<input type="submit" name="">
+</p>
+    </div>
+
+</form>
+<br>
+<br>
+<br>
+<br>
+
+<!-- <div class="row no-gutters display: flex; flex-wrap: wrap;">
+            <%images.forEach(function(image){%>
+          <div class="col-lg-3 col-md-4 col-xs-6 ">
+            <div class="gallery-item thumbnail">
+              <a href="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" class="venobox" data-gall="gallery-item">
+                <img src="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="" class="img-fluid img"/>
+              </a>
+            </div>
+          </div>
+          <%})%>
+      </div> -->
+<h2 style="color: black"><a style="text-decoration: none;" href="/gallery">Check it out</a></h2>
+<p><a href="/logout">Logout</a></p>
+
+
+

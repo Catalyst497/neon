@@ -52,7 +52,23 @@ h4 #logo {
 #a{
 	color: #49b5e7
 }
+.login{
+	text-align: center;
+}
+.login button{
+	display: inline-block;
+	width: 22em;
+}
+.login input{
+	width: 22em
+	/*border:none;*/
+}
+
 /*body{
 	background: black;
 	color : #000;
+}*/
+
+/*#edit{
+	display:none;
 }*/

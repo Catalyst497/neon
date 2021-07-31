@@ -4,104 +4,20 @@
 
         <div class="section-title">
           <h2>Gallery</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
 
         <div class="row no-gutters display: flex; flex-wrap: wrap;">
-
+            <%images.forEach(function(image){%>
           <div class="col-lg-3 col-md-4 col-xs-6 ">
             <div class="gallery-item thumbnail">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.11 AM (1).jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.11 AM (1).jpeg" alt="" class="img-fluid img">
+              <a href="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" class="venobox" data-gall="gallery-item">
+                <img src="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="" class="img-fluid img"/>
               </a>
             </div>
           </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item thumbnail">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.11 AM.jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.11 AM.jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item thumbnail">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.12 AM (1).jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.12 AM (1).jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.12 AM.jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.12 AM.jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.13 AM (1).jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.13 AM (1).jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.13 AM (2).jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.13 AM (2).jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.13 AM.jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.13 AM.jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.14 AM.jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.14 AM.jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-           <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.15 AM (2).jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.15 AM (2).jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.15 AM (3).jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.15 AM (3).jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.17 AM.jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.17 AM.jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="gallery-item">
-              <a href="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.18 AM (3).jpeg" class="venobox" data-gall="gallery-item">
-                <img src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.18 AM (3).jpeg" alt="" class="img-fluid img">
-              </a>
-            </div>
-          </div>
+          <%})%>
+          
         </div>
 
       </div>
