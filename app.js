@@ -10,18 +10,15 @@ var upload = require("./models/multer");
 var MongoStore = require("connect-mongo");
 var connectEnsureLogin = require('connect-ensure-login');
 var flash = require("connect-flash");
-
-
 var fs = require('fs');
 var path = require('path');
 require('dotenv/config');
-
 const URL = "mongodb+srv://Catalyst:Randomshap197@neon.chpcu.mongodb.net/Neon?retryWrites=true&w=majority";
-mongoose.connect(URL ,
+var conn = mongoose.connect(URL ,
     {
         useNewUrlParser: true, useUnifiedTopology: true
     })
-
+conn.catch(err => console.log(err))
 mongoose.set('useFindAndModify', false);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -33,6 +30,7 @@ var expressSession = require('express-session')({
   secret: 'secret',
   resave: false,
   saveUninitialized: false,
+  store: sessionStore,
   cookie:{
             maxAge: 1000 * 60 * 60 * 5
         }
