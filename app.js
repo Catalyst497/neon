@@ -59,6 +59,6 @@ app.use(routes);
 
 
 
-app.listen( process.env.port || 400 , '0.0.0.0', function(){
+app.listen( process.env.PORT || 400 , '0.0.0.0', function(){
     console.log("You are welcome to naija")
 });
