@@ -90,7 +90,7 @@ router.post("/edit", isLoggedIn, upload.single('image'), function(req,res){
         else {
             // item.save();
             // console.log(item.img.data.toString('base64'));
-            res.redirect('/edit');
+            res.redirect('/gallery');
         }
     });
 })
