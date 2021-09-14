@@ -11,17 +11,15 @@ h4 #logo {
 }
 
 .imga{
-    /*float: left;*/
-    width:  220px;
+    /*float: eft;*/
+    width:  280px;
     height: 150px;
-    border-radius: 2%;
     background-size: cover;
 }
 .img{
     /*float: left;*/
-    width:  270px;
-    height: 220px;
-    border-radius: 2%;
+    width:  100px;
+    height: 100px; 
     background-size: cover;
 }
 .social{
@@ -49,9 +47,6 @@ h4 #logo {
     display: none;
   }
 }
-#a{
-	color: #49b5e7
-}
 .login{
 	text-align: center;
 }
@@ -64,11 +59,29 @@ h4 #logo {
 	/*border:none;*/
 }
 
-/*body{
-	background: black;
-	color : #000;
-}*/
+.btn{
+	background: #1bdb0d;
+	color: white;
+	border: none; 
+}
+.btn:hover{
+	background: #00ff26;
+}
+.gall{
+	margin: auto;
+}
+.gallery-edit{
+	height: 24px;
 
-/*#edit{
-	display:none;
-}*/
+}
+#gallery-edit{
+	border: 1px;
+	background: #e02c14;
+	border-radius: 5px;
+	color: white;
+}
+#addition{
+	margin: auto;
+	font-size: x-large;
+	color: #1bdb0d;
+}

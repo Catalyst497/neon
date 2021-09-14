@@ -12,7 +12,17 @@ var router = require("express").Router(),
 
 
 router.get("/", function (req,res){
-      res.render("Home Page")        
+      Images.find(
+        {}, 
+        function(err,images){
+          if(err){
+            console.log(err);
+          }else{
+             res.render("Home Page", {images:images});
+          }
+        }
+      )
+        
 });
 router.get("/login", function(req,res){
   res.render("login", {error:req.flash.error});
@@ -25,14 +35,14 @@ router.post("/login", function(req,res,next){
     }
 
     if (!user) {
-        // req.flash("error", err.message);
-      return res.redirect('/login');
+
+      //req.flash("error", err.message);
+      res.redirect('/login');
     }
 
     req.logIn(user, function(err) {
       if (err) {
-        
-        console.log(err);
+        // console.log(err);
         req.flash("error", err.message);
         return res.redirect("/login");
       }
@@ -45,23 +55,13 @@ router.post("/login", function(req,res,next){
 
 router.get("/logout", function(req,res){
     req.logout();
-    // req.flash("success", "Succesfully logged out!!");
+    req.flash("success", "Succesfully logged out!!");
     res.redirect("/");
 });
 
 
 router.get("/gallery", function(req,res){
-    Images.find(
-        {}, 
-        function(err,images){
-          if(err){
-            console.log(err);
-          }else{
-             res.render("Gallery", {images:images});
-          }
-        }
-      )
-
+    
 
 })
 
@@ -88,12 +88,22 @@ router.post("/edit", isLoggedIn, upload.single('image'), function(req,res){
             console.log(err);
         }
         else {
-            // item.save();
-            // console.log(item.img.data.toString('base64'));
-            res.redirect('/gallery');
+            res.redirect('/');
         }
     });
 })
+router.delete("/:id", isLoggedIn, function(req,res){
+    Images.findByIdAndDelete(req.params.id,  function(err, camp){
+            if(err){
+                res.redirect("/")
+            }else{
+                req.flash("success", "Deleted successfully");
+                res.redirect("/")
+            }
+        }
+    )
+});
+
 
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){

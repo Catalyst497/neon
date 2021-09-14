@@ -9,21 +9,21 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
+  font-family: 'Kaisei HarunoUmi', serif;
+  color: #3a3b39;
 }
 
 a {
-  color: #49b5e7;
+  text-decoration: none !important;
+  
 }
 
 a:hover {
-  color: #76c7ed;
-  text-decoration: none;
+    text-decoration : none ;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Dosis", sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -45,13 +45,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 4px;
-  background: #49b5e7;
+  background: #1bdb0d;
   color: #fff;
   transition: all 0.4s;
 }
 
 .back-to-top i:hover {
-  background: #1da2e0;
+  background: #1bdb0d;
   color: #fff;
 }
 
@@ -74,11 +74,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-family: "Lato", sans-serif;
+/*  font-family: "Lato", sans-serif;*/
+  font-family: 'Nunito', sans-serif;
 }
 
 #header .logo a {
-  color: #0f394c;
+  color: #000a01;
 }
 
 #header .logo img {
@@ -108,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu a {
   display: block;
   position: relative;
-  color: #0f394c;
+  color: #000a01 /*#0f394c*/;
   transition: 0.3s;
   font-size: 15px;
   font-family: "Dosis", sans-serif;
@@ -117,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
-  color: #49b5e7;
+  color: #1bdb0d/*#49b5e7*/;
 }
 
 .nav-menu .drop-down ul {
@@ -215,7 +216,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-toggle i {
-  color: #49b5e7;
+  color: #1bdb0d;
 }
 
 .mobile-nav {
@@ -250,7 +251,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-  color: #49b5e7;
+  color: #1bdb0d;
   text-decoration: none;
 }
 
@@ -320,15 +321,16 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero h1 {
   margin: 0;
+  font-family: 'Acme', sans-serif; 
   font-size: 42px;
   font-weight: 700;
   line-height: 56px;
-  color: #0f394c;
+  color: #171717;
   text-transform: uppercase;
 }
 
 #hero h2 {
-  color: #1c698c;
+  color: #171717;
   margin: 10px 0 0 0;
   font-size: 20px;
 }
@@ -396,9 +398,9 @@ section {
   font-size: 32px;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-bottom: 0;
-  color: #0f394c;
+  color: #171717;
 }
 
 .section-title p {
@@ -887,7 +889,7 @@ section {
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(11, 41, 55, 0.9);
+  background: rgba(27, 219, 13, 0.7);
 }
 
 .testimonials .section-header {
@@ -958,7 +960,7 @@ section {
 }
 
 .testimonials .owl-dot.active {
-  background-color: #49b5e7 !important;
+  background-color: #f0faf3/*#49b5e7*/ !important;
 }
 
 @media (min-width: 1024px) {
@@ -1060,13 +1062,7 @@ section {
   border-bottom: 3px solid #fff;
 }
 
-.gallery .gallery-item img {
-  transition: all ease-in-out 0.4s;
-}
 
-.gallery .gallery-item:hover img {
-  transform: scale(1.1);
-}
 
 /*--------------------------------------------------------------
 # Contact
@@ -1448,7 +1444,7 @@ section {
 #footer .footer-top h4 {
   font-size: 16px;
   font-weight: bold;
-  color: #0f394c;
+  color: #171717;
   position: relative;
   padding-bottom: 12px;
 }
@@ -1465,8 +1461,8 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #49b5e7;
-  font-size: 18px;
+  color: #1bdb0d;
+  font-size: x-small;
   line-height: 1;
 }
 
@@ -1489,13 +1485,13 @@ section {
 
 #footer .footer-top .footer-links ul a:hover {
   text-decoration: none;
-  color: #49b5e7;
+  /*color: #49b5e7;*/
 }
 
 #footer .footer-top .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #49b5e7;
+  background: #1bdb0d;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -1517,7 +1513,7 @@ section {
 
 }
 #footer .footer-top .social-links a:hover {
-  background: #1da2e0;
+  background: ;
   color: #fff;
   text-decoration: none;
 }

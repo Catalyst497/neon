@@ -10,6 +10,7 @@ var upload = require("./models/multer");
 var MongoStore = require("connect-mongo");
 var connectEnsureLogin = require('connect-ensure-login');
 var flash = require("connect-flash");
+var methodOverride        = require("method-override");
 var fs = require('fs');
 var path = require('path');
 require('dotenv/config');
@@ -35,11 +36,10 @@ var expressSession = require('express-session')({
             maxAge: 1000 * 60 * 60 * 5
         }
 });
-
+app.use(methodOverride("_method"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressSession);
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(User.createStrategy());
