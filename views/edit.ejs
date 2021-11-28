@@ -1,36 +1,38 @@
 <%- include("partials/header") %>
-
-<form action="/edit" method="POST" enctype="multipart/form-data">
+<head>
+	<style type="text/css">
+		body{
+			background: #030802;
+			padding-top: 75px;
+		}
+	</style>
+</head>
+<body id="edit">
+	<form action="/edit" method="POST" enctype="multipart/form-data">
 	<div>
-		<p>        
-			<label for="image">Upload Image</label>
+
+<p>
+  <input type="text" name="name" placeholder="Name of Bag here...">
 </p>
-		<p>        
-			<input type="file" id="image" name="image" required>
+<p>        
+<label for="image">Image of bag here...</label>
+</p>
+<p>
+	<input type="file" id="image" name="image" required>
+</p>	
+<p>
+  <input type="text" name="price" placeholder="Price of bag here...">
+</p>
+<p>
+	<input type="text" name="purchaseUrl" placeholder="Purchase URL">
 </p>
 		<p>        
 			<input type="submit" name="">
 </p>
     </div>
-
 </form>
-<br>
-<br>
-<br>
-<br>
+</body>
 
-<!-- <div class="row no-gutters display: flex; flex-wrap: wrap;">
-            <%images.forEach(function(image){%>
-          <div class="col-lg-3 col-md-4 col-xs-6 ">
-            <div class="gallery-item thumbnail">
-              <a href="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" class="venobox" data-gall="gallery-item">
-                <img src="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="" class="img-fluid img"/>
-              </a>
-            </div>
-          </div>
-          <%})%>
-      </div> -->
-<p><a href="/logout">Logout</a></p>
 
 
 

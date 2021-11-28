@@ -1,0 +1,20 @@
+<%- include("partials/header") %>
+<head>
+	<style type="text/css">
+		body{
+			background:#030802;
+			padding-top: 75px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<section id="show-page">
+	<div>
+	<img class="img" src="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>">
+</div>
+<div>
+	<h1><%=image.name%></h1>
+</div>
+</section>

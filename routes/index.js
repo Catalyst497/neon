@@ -9,8 +9,6 @@ var router = require("express").Router(),
     connectEnsureLogin = require('connect-ensure-login'),
     User = require("../models/users");
 
-
-
 router.get("/", function (req,res){
       Images.find(
         {}, 
@@ -35,14 +33,11 @@ router.post("/login", function(req,res,next){
     }
 
     if (!user) {
-
-      //req.flash("error", err.message);
       res.redirect('/login');
     }
 
     req.logIn(user, function(err) {
       if (err) {
-        // console.log(err);
         req.flash("error", err.message);
         return res.redirect("/login");
       }
@@ -58,30 +53,18 @@ router.get("/logout", function(req,res){
     req.flash("success", "Succesfully logged out!!");
     res.redirect("/");
 });
-
-
-router.get("/gallery", function(req,res){
-    
-
-})
-
 router.get("/edit", isLoggedIn, function(req,res){
-  Images.find(
-        {}, 
-        function(err,images){
-          if(err){
-            console.log(err);
-          }else{
-             res.render("edit", {images:images});
-          }
-        }
-      )})
+             res.render("edit");
+});
 router.post("/edit", isLoggedIn, upload.single('image'), function(req,res){
     var obj = {
+      name: req.body.name,
         img: {
             data: fs.readFileSync(path.join( __dirname, '../' + '/uploads/' + req.file.filename)),
             contentType: 'image/png'
-        }
+        },
+        price: req.body.price,
+        purchaseUrl: req.body.purchaseUrl
     }
     Images.create(obj, function(err, item){
         if (err) {
@@ -98,7 +81,7 @@ router.delete("/:id", isLoggedIn, function(req,res){
                 res.redirect("/")
             }else{
                 req.flash("success", "Deleted successfully");
-                res.redirect("/")
+                res.redirect("/#gallery")
             }
         }
     )

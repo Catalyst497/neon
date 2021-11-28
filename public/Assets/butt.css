@@ -1,5 +1,82 @@
-body{
-	margin-top: 6em;
+a, button{
+	font-family: roboto;
+}
+a:hover{
+	color: white !important;
+}
+section {
+  padding: 30px 0;
+}
+header{
+	position:absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	z-index: 9;
+}
+header div{
+	margin-top: 10px;
+	display: flex;
+	height: 50px;
+	background: rgba(0,0,0,0);
+	color: white;
+	padding: 0 30px;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: nowrap;
+	padding-left: 40px;
+}
+header .brand{
+	text-align: center;
+	flex-basis: 200px;
+}
+header .options{
+	flex-basis: 600px;
+}
+header .options a{
+	text-decoration: none;
+	color: #efe;
+	font-size: 20px;
+}
+header h1{
+	font-family: 'Itim', cursive;	
+	font-size: 50px;
+ 	color: #dfd;
+ 	font-weight: 700;
+}
+#hero{
+	padding-top: 0;
+}
+#hero > div{
+	display: flex;
+	height: 700px;
+	background-color: rgba(0, 0, 0, 0.9);
+	background-image: url('./../Butterfly/assets/img/another.jpg');
+	background-blend-mode: darken;
+	background-size: 100% 100%;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background-repeat: no-repeat
+	margin-top: 0;
+}
+#hero div span a{
+	display: inline-block;
+	border: 2px solid #dfd;
+	border-radius: 8px 10px;
+	color: #dfd;
+	font-family: roboto, sans-serif;
+	text-decoration: none;
+	font-size: 20px;
+	padding: 10px 15px;
+}
+#hero h1{
+	color: #90d700;
+	font-size: 50px;
+	font-family: roboto, sans-serif;
+	font-weight: 700;
+	padding-bottom: 2rem;
 }
 h4 #logo {
 	display: inline-block;
@@ -11,16 +88,62 @@ h4 #logo {
 }
 
 .imga{
-    /*float: eft;*/
     width:  280px;
     height: 150px;
     background-size: cover;
 }
+
+/*Gallery*/
 .img{
-    /*float: left;*/
-    width:  100px;
-    height: 100px; 
-    background-size: cover;
+    width:  100%;
+    height: 100%; 
+  	transition: all ease-in-out 0.4s;
+}
+.img:hover{
+  transform: scale(1.1);
+}
+.galle-1{
+	display: grid;
+	grid-gap: 2px;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.galle-1-1{
+	display: grid;
+	grid-template-rows: repeat(3, 100px); 
+	overflow: hidden;
+}
+.galle-1-1:nth-child(1){
+	grid-row: 1/2;
+	z-index: 9;
+	background-color:rgba(27, 219, 13, 0.5); 
+}
+.galle-1-1:nth-child(2){
+	grid-row: 1/4;
+}
+.galle-2{
+	display: flex;
+	justify-content: space-around;
+	background: #1bdb0d;
+	padding: 5px 0 0 0;
+}
+.galle-2>p{
+	font-size: 10px;
+	text-align: center;
+	color: white;
+}
+.galle-2 i{
+	font-size:25px; 
+	color: white;
+	display: block;
+}
+.galle-2>p>a:hover{
+	color: rgba(0,0,0,0);
+}
+.galle-3{
+	color: #1bdb0d;
+	text-align: center;
+	font-size: 18px;
+	height: 30px;
 }
 .social{
 	margin-left:7em;
@@ -34,7 +157,6 @@ h4 #logo {
 }
 #large{
 	font-size: xx-large;
-	/*filter: invert(1);*/
 }
 .list{
 	margin-top: 50px;
@@ -42,23 +164,11 @@ h4 #logo {
 	margin-bottom: 0;
 	margin-left: 4em;
 }
-@media only screen and (max-width: 1000px) {
+@media(max-width: 1000px) {
   .list {
     display: none;
   }
 }
-.login{
-	text-align: center;
-}
-.login button{
-	display: inline-block;
-	width: 22em;
-}
-.login input{
-	width: 22em
-	/*border:none;*/
-}
-
 .btn{
 	background: #1bdb0d;
 	color: white;
@@ -82,6 +192,56 @@ h4 #logo {
 }
 #addition{
 	margin: auto;
-	font-size: x-large;
+	font-size: 40px;
 	color: #1bdb0d;
+}
+div .training{
+	font-size: x-large;
+	color:  #171717 !important;
+	font-family: "Dosis", sans-serif;
+	font-weight: bold;
+}
+.video{
+	display:inline-block;
+	width: 150px;
+	height: 50px;
+	font-family: sans-serif, Dosis;
+	font-weight: bold;
+}
+
+/*show page*/
+#show-page>div{
+	width: 500px;
+	height: 500px;
+}
+
+/* edit, login */
+.login{
+	color: white;
+	text-align: center;
+}
+.login button{
+	display: inline-block;
+	width: 22em;
+}
+.login input{
+	width: 22em
+}
+#edit{
+	text-align: center;
+}
+input,label{
+	width: 40%;
+	color: white;
+	background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+	border: none;
+}
+input::placeholder{
+	color: white;
+}
+#edit input[type="submit"]{
+	background: #1bdb0d;
+}
+input[type="file"]{
+	display: none;
 }
