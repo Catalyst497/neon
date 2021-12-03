@@ -18,7 +18,7 @@
             <div>
               <div class="galle-1-1">
                  <div>
-                  One
+                  <%=image.name%> - <%=image.price%>
                 </div>
                  <a href="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>">
                 <img src="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="" class="img"/>
@@ -40,9 +40,9 @@
                 Purchase
                 </p>
              </div>
-             <div class="galle-3">
+<!--              <div class="galle-3">
                <i class="fas fa-money-check"></i> <%=image.price%>
-             </div>
+             </div> -->
           </div>
           <%})%>
           <%if(currentUser){%>
