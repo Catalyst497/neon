@@ -32,12 +32,19 @@ header .brand{
 	flex-basis: 200px;
 }
 header .options{
-	flex-basis: 600px;
-}
+	display: flex;
+/*	flex-basis: 600px;
+*/}
 header .options a{
 	text-decoration: none;
 	color: #efe;
 	font-size: 20px;
+}
+@media(max-width: 1000px){
+	header .options{
+		background: yellow;
+		visibility: hidden;
+	}
 }
 header h1{
 	font-family: 'Itim', cursive;	

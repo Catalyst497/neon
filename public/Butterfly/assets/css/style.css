@@ -85,24 +85,25 @@ a:hover {
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Desktop Navigation */
-.nav-menu ul {
+.nav-menu{
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
-.nav-menu > ul {
+.nav-menu{
   display: flex;
 }
 
-.nav-menu > ul > li {
+.nav-menu div {
+  flex-basis: 300px;
+  display: inline-block;
   position: relative;
   white-space: nowrap;
   padding: 10px 0 10px 28px;
 }
 
 .nav-menu a {
-  display: block;
+  display: inline-block;
   position: relative;
   color: #000a01 /*#0f394c*/;
   transition: 0.3s;
