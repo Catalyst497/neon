@@ -17,7 +17,7 @@ header{
 }
 header div{
 	margin-top: 10px;
-	display: grid;
+	display: flex;
 	height: 50px;
 	background: rgba(0,0,0,0);
 	color: white;
@@ -29,7 +29,8 @@ header div{
 }
 header .brand{
 	text-align: center;
-	justify-self: start;
+	justify-content: start;
+	margin-left: 0;
 }
 header .options{
 	display: flex;
