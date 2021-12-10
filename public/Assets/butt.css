@@ -18,26 +18,31 @@ header{
 header div{
 	margin-top: 10px;
 	display: flex;
+	column-gap: 600px;
 	height: 50px;
 	background: rgba(0,0,0,0);
 	color: white;
 	padding: 0 30px; 
 	justify-content: space-between;
 	align-items: center;
-	flex-wrap: nowrap;
 	padding-left: 40px;
 }
 header .brand{
 	text-align: center;
-	justify-content: start;
+	justify-self: start;
 	margin-left: 0;
 }
 header .options{
-	display: flex;
-	flex-basis: 600px;
+	display: grid;
+/*	grid-gap: 30px;
+*/	grid-template-columns: repeat(3, 200px);
+	margin-top: 40px;
+	justify-content: space-between;
 }
-header .options a{
+header .options>a{
+	display: inline-block;
 	text-decoration: none;
+	margin-right: 20px;
 	color: #efe;
 	font-size: 20px;
 }

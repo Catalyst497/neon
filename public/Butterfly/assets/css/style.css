@@ -105,7 +105,7 @@ a:hover {
 .nav-menu a {
   display: inline-block;
   position: relative;
-  color: #000a01 /*#0f394c*/;
+  color: #000a01;
   transition: 0.3s;
   font-size: 15px;
   font-family: "Dosis", sans-serif;
