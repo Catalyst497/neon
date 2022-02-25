@@ -1,44 +1,83 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>Neon Collections</title>
-	<meta content="" name="description">
-  <meta content="" name="keywords">
-   
-   <link type="image/png" href="Butterfly/assets/img/ICO.png" rel="icon">
-  <link href="Butterfly/assets/img/ICO.png" rel="apple-touch-icon">
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Neon Collections</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
 
-  <link href="Butterfly/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="Butterfly/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="Butterfly/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="Butterfly/assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="Butterfly/assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
-  <link href="Butterfly/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet"> 
+    <link type="image/png" href="Butterfly/assets/img/ICO.png" rel="icon" />
+    <link href="Butterfly/assets/img/ICO.png" rel="apple-touch-icon" />
+    <!-- Google Fonts -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    /> -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Molengo|Mandali"
+      rel="stylesheet"
+    />
+    <!-- <link
+      href="Butterfly/assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    /> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- <link
+      href="Butterfly/assets/vendor/icofont/icofont.min.css"
+      rel="stylesheet"
+    /> -->
+    <!-- <link
+      href="Butterfly/assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    /> -->
+    <!-- <link href="Butterfly/assets/vendor/venobox/venobox.css" rel="stylesheet" /> -->
+    <!-- <link
+      href="Butterfly/assets/vendor/line-awesome/css/line-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="Butterfly/assets/vendor/owl.carousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    /> -->
 
-  <!-- Template Main CSS File -->
-<link href="Assets/butt.css" rel="stylesheet">
-<link href="Butterfly/assets/css/style.css" rel="stylesheet">
-</head>
-<body>
-  <header>
-  <div >
-    <div class="brand">
-      <h1>neon</h1>
-    </div>
-    <div class="nav-menu d-none d-lg-block options">
-      <a href="#about">Training</a>
-      <a href="#gallery">Purchase Bag</a>
-      <a href="#footer">Contact Us</a>
-      <%if(currentUser){%>
-      <a href="/logout">Logout</a>
-      <%}%> 
-    </div>
-  </div>
-  </header>
+    <!-- Template Main CSS File -->
+    <link href="Assets/butt.css" rel="stylesheet" />
+    <!-- <link href="Butterfly/assets/css/style.css" rel="stylesheet" /> -->
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="Butterfly/assets/img/logo.jpg" class="logo" alt="" />
+      </div>
+      <div class="items toggle-style">
+        <div class="item no-top-border"><a href="#">Home</a></div>
+        <div class="item"><a href="#">About</a></div>
+        <div class="item has-subitem">
+          <a tabindex="0">Services</a>
+          <ul class="submenu">
+            <li class="subitem">Online Training</li>
+            <li class="subitem">Physical Training</li>
+            <li class="subitem">Mental Training</li>
+          </ul>
+        </div>
+        <div class="item"><a href="#">Blog</a></div>
+        <div class="item"><a href="#">Contact</a></div>
+      </div>
+
+      <div class="toggle">
+        <a id="toggle"><i class="fas fa-bars"></i></a>
+      </div>
+    </header>
+  </body>
+</html>
