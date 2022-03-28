@@ -179,6 +179,7 @@ header img.logo {
   width: 500%;
   margin: 0;
   left: 0;
+  overflow: hidden;
   animation: 20s slider infinite;
 }
 .carousel figure img {
@@ -307,10 +308,8 @@ header img.logo {
 .view-item {
   display: flex;
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  height: 100vh;
   z-index: 12;
   background-color: rgba(145, 145, 145, 0.7);
   backdrop-filter: blur(5px);
