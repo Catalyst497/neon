@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+<head>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<!--- Select the bag that has the selected button attached to it. 
+	- Create a look for the bag just selected.
+	- Compile the the various bags selected into an array.
+	- Create a purchase link for the customers to purchase through. -->
+	<%commodities.forEach(function(commodity){%>
+		<div class="commodity">
+			<div class="L1_2">
+				<img src="data:<%=commodity.img.contentType%>;base64,<%=commodity.img.data.toString('base64')%>" alt="<%=commodity.name%>" height="80%" width="80%"/>
+			</div>
+			<div class="L1_1">
+				<h3><%=commodity.name%></h3>
+				<em><%=commodity.price%></em>
+				<p><%=commodity.description%></p>
+			</div>
+
+			<form action="/delete-from-cart?_method=delete" method="post">
+				<button name='id' value="<%=commodity._id%>">
+					Delete from cart
+				</button>
+			</form>
+		</div>
+	<%})%>
+</body>

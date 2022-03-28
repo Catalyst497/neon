@@ -11,6 +11,7 @@ var imageSchema = new mongoose.Schema({
         contentType: String
     },
     price: String,
+    description: String,
     purchaseUrl: String
 });
 Image = mongoose.model("Image",imageSchema);
