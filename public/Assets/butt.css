@@ -173,13 +173,13 @@ header img.logo {
   position: absolute;
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }
 .carousel figure {
   position: relative;
   width: 500%;
   margin: 0;
   left: 0;
-  overflow: hidden;
   animation: 20s slider infinite;
 }
 .carousel figure img {
@@ -299,7 +299,7 @@ header img.logo {
   color: rgb(240, 240, 240);
   font-family: "Fredoka", sans-serif;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 10px;
   padding: 5px;
   margin-top: 2.6px;
 }
@@ -363,8 +363,8 @@ header img.logo {
   display: inline-block;
   margin-top: 2.6px;
   border: 1px solid gray;
-  font-size: 7px;
-  padding: 2px;
+  font-size: 4px;
+  padding: 1px;
 }
 .cart-button {
   background-color: white;
