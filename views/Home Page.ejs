@@ -1,4 +1,5 @@
 <%- include("partials/header") %>
+
 <div class="hero">
   <div class="heroL1 carousel">
     <figure>
@@ -11,7 +12,7 @@
         alt=""
       />
       <img
-        src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.13 AM (3).jpeg"
+        src="Butterfly/assets/img/WhatsApp Image 2021-06-11 at 7.35.13 AM (4).jpeg"
         alt=""
       />
       <img
@@ -26,41 +27,49 @@
   </div>
   <div class="heroL1 transparent-beauty">
     <div>
-      <h1>Experience creativity at it's peak.</h1>
+      <h1>Look Stylish, Be Stylish</h1>
     </div>
-      <span class="shop"><a href='https://www.google.com'>SHOP NOW <i class="fa-solid fa-cart-shopping"></i></a></span>
+      <span class="shop"><a href="#">SHOP NOW <i class="fa-solid fa-cart-shopping"></i></a></span>
   </div>
 </div>
+<section id="Hero-for-large">
+    <div class="hero-for-large">
+      <div class="abslt transparent">
+        <div class="stables"></div>
+        <div class="stables real" data-aos="fade-down">
+        <h1>Look Stylish... <br>Be Stylish</h1>
+        <p><em>Get stylish quality Handbags like you'll find no where.</em></p>
+        <div class="shopnow">
+          <a href="#">Shop Now <div style="display:inline-block"><i class="fa-solid fa-cart-shopping"></i></div></a>
+        </div>
+      </div>
+      </div>
+      <div class="abslt non-transparent">
+    <img src="Butterfly/assets/img/background trial 2_ccexpress.png" alt="Hero Image">
+      </div>
+    </div>
+</section>
 <section id="gallery" class="gallery">
       <div class="container">
         <div class="section-title">
-         <h4>Recently added</h4>
+         <h1 class="viewtype">Recently Added</h1>
         </div>
-        <div class="galle-1">
-        <%images.forEach(function(image){%>
-          <div class="galle-1-L1" data-value="<%=image._id%>">
+        <div class="galle-1 show-the-stuff">
+        <%images.forEach(function(image){%> 
+          <div class="galle-1-L1" data-aos="fade-in" data-value="<%=image._id%>">
             <div>
-              <p><span id="name"><%=image.name%></span> </p>
               <div class="img">
-                <img data-value="<%=image._id%>" class="Himg" src="data:<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="" width='100%' height='85%' />
-                <span id='price'><i class="fa-solid fa-tag"></i>
-                  <span class="price"><%=image.price = image.price[0] == '#' ? image.price.slice(1) : image.price%></span>
-                </span>
-                <button data-value='<%=image._id%>' class="view-good"><a>view</a></button>
-                <div  class="add-to-cart">
-                  <!--TODO
-                  - Basic styling for the show.
-                  - Attach to a button.
-                  - Complete the styling.
-                  - Do the rest of functionality with moving to the cart.
-                  -->
-                  <form method="post" action='/'>
-                    <button type='submit' class='cart-button' name="id" value="<%=image._id%>">
-                      <i class="fas fa-plus"></i>
-                      <div id="add-to-cart">ADD TO CART</div>
-                    </button>
-                  </form>
+                <img data-value="<%=image._id%>" class="Himg" src="data:image/<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="" width='100%' height='100%' />                
+                <div class="view-good">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i> <span> Expand  View</span>
                 </div>
+              </div>
+              <div class="underimage">
+              <h4 class="name"><%=image.name%></h4> 
+              <div class="price"><i class="fa-solid fa-naira-sign"></i><%=image.price%></div>
+              <form style='display: none;' class='add-to-cart' action="/" method="post">
+                <button name="id" value="<%=image._id%>">ADD TO CART</button>
+              </form>
               </div>
             </div>
           </div>
@@ -83,6 +92,5 @@
         </div>
 
       </div>
-    </section>
-
+</section>
 <%- include("partials/footer") %>

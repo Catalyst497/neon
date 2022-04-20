@@ -1,38 +1,54 @@
-<%- include("partials/header") %>
-<head>
-	<style type="text/css">
-		body{
-			background: #030802;
-			padding-top: 75px;
-		}
-	</style>
-</head>
-<body id="edit">
-	<form action="/edit" method="POST" enctype="multipart/form-data">
-	<div>
-
-<p>
-  <input type="text" name="name" placeholder="Name of Bag here...">
-</p>
-<p>        
-<label for="image">Image of bag here...</label>
-</p>
-<p>
-	<input type="file" id="image" name="image" required>
-</p>	
-<p>
-  <input type="text" name="price" placeholder="Price of bag here...">
-</p>
-<p>
-	<input type="text" name="purchaseUrl" placeholder="Purchase URL">
-</p>
-		<p>        
-			<input type="submit" name="">
-</p>
-    </div>
-</form>
+<%- include("partials/part-header") %>
+<body>
+	<section id="main">
+		<div class="logo">
+			<div>
+				<h1>Neon Creatives</h1>
+				<em>. . . Creativity at it's peak</em>
+			</div>
+		</div>
+		<div class="form new-bag">
+			<h3>Add the new item here bag here</h3>
+			<form action="/edit" method="POST" enctype="multipart/form-data">
+					<p>
+						<input type="text" name="name" placeholder="Name of Bag here...">
+					</p>
+					<p>
+						<label>Upload Bag image here</label>
+						<input type="file" id="image" name="image" accept=".jpg, .jpeg, .png" required>
+						<img class="input" src="" height="200px" width="200px" alt="Your Image preview will show here">
+					</p>
+					<p>
+						<input type="text" name="price" placeholder="Price of bag here...">
+					</p>
+					<p>
+						<input type="text" name="purchaseUrl" placeholder="Purchase URL">
+					</p>
+					<p>
+						<input type="submit" name="">
+					</p>
+			</form>
+		</div>
+	</section>
+	<script>
+		const imgInput = document.querySelector('img.input');
+		const fileSelector = document.querySelector('#image');
+		fileSelector.addEventListener('change', (event) => {
+			const fileList = event.target.files;
+			let file = fileList[0];
+			function readImage (file){
+			if (file.type && !file.type.startsWith('image/')) {
+    		console.log('File is not an image.', file.type, file);
+    		return;
+  			}else {
+				   const reader = new FileReader();
+					reader.addEventListener('load', (event) => {
+						imgInput.src = event.target.result;
+					});
+					reader.readAsDataURL(file);
+			  }
+			}
+			readImage(file);
+		})
+	</script>
 </body>
-
-
-
-

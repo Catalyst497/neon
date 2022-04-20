@@ -1,29 +1,290 @@
-<%- include("partials/header") %>
+<!DOCTYPE html>
+<html>
 <head>
-	<style type="text/css">
+	<Title>Neon Creatives: Cart</Title>
+	<meta name="viewport" content="width=device-width", initial-scale="1.0">
+	<link type="image/png" href="Butterfly/assets/img/ICO.png" rel="icon" />
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500&family=Boogaloo&family=Fredoka:wght@400;500&family=Raleway:wght@200&family=Roboto+Mono:wght@500&family=Roboto+Slab:wght@500&family=Titillium+Web:wght@600&display=swap"
+		rel="stylesheet">
+		<style>
+		/* General Stuff */
+		body{
+			background-color: whitesmoke;
+		}
+		a {
+			text-decoration: none;
+		}
+		/* Err Page */
+		#errhandl {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+		}
+	
+		#errhandl a {
+			text-decoration: underline;
+			color: black;
+		}
+	
+		#errhandl a:hover {
+			text-decoration: underline;
+			color: gray;
+		}
+	
+		#errhandl div.bag-image {
+			justify-content: center;
+			height: 30rem;
+			overflow: hidden;
+		}
+	
+		#errhandl img {
+			height: 120%;
+			width: 100%;
+		}
+
+		/* Real Cart */
+		.all-commodities {
+			text-align: center;
+			display: grid;
+			width: (100% - 2rem, 800px);
+			grid-template-columns: 1fr;
+			grid-template-areas: 
+			"Bags" 
+			"Pricing"
+			;
+			margin-block-start: 1rem;
+			margin-inline: auto;
+		}
+		.CI-P1{
+			grid-area: Bags;
+		}
+		.itempricecalculator {
+			grid-area: Pricing;		
+		}
+		/* List of Bags */
+		.CI-P1 {
+			background-image: linear-gradient(to right, rgba(0, 225, 0, 0.5), rgba(34, 227, 0, 0.5));
+			backdrop-filter: blur(5px);
+			padding: 1rem 1rem;
+			padding-bottom: 2rem;
+		}
+		.CI-P1 h1 {
+			font-family: 'Boogaloo', cursive;
+			color: whitesmoke
+		}
+		.CI-P1 h1 > p {
+			font-family: 'Akshar', sans-serif;
+			font-weight: 300;
+			color: #49413f;
+			font-size: small;
+		}
+		.CI-P1 h1 > p i {
+			font-size: medium;
+		}
+		.cartitems::-webkit-scrollbar {
+			width: 0.4rem;
+		}
+		.cartitems::-webkit-scrollbar-track {
+			background-color: rgb(155, 245, 130);
+		}
+		.cartitems::-webkit-scrollbar-thumb {
+			background-color: rgb(11, 219, 11);
+			border-radius: 1rem;
+		}
+		.cartitems {
+			display: grid ;
+			grid-gap: 3px;
+			grid-template-columns: repeat(2, 1fr);
+			grid-auto-rows: 170px;
+			min-height: auto;
+			max-height: 300px;
+			justify-content: center;
+			overflow-y: auto;
+		}	
+		.cartitems > * {
+			color: whitesmoke;
+			opacity: 0;
+			transition: opacity 0.8s;
+		}
+		@media only screen and (min-width: 600px) {
+			.CI-P1 {
+				margin-inline: 15rem;
+			}
+			.cartitems {
+				grid-template-columns: repeat(auto-fit, 200px);
+				margin-inline: 2rem;
+				max-height: 400px;
+				grid-auto-rows: 200px;
+			}
+		}
+
+
+		/* Item Price Calculator */
+		.itempricecalculator {
+			margin-block-start: 1.5rem;
+		}
+		.itempricecalculator h1 {
+		font-family: 'Titillium Web', sans-serif;
+		font-size: 1.5rem;			
+		}
+		.itempricecalculator .party-popper {
+			height: 2rem;
+			width: 2rem;
+		}
+		.itempricecalculator p {
+			font-size: 15px;
+			font-weight: 100;
+			font-family: "Roboto Mono", monospace;
+		}
+		span.commodity-price {
+			display: block;
+			font-size: 18px;
+			font-weight: 600;
+			color: #1e6806;
+			font-family: monospace;
+		}
+		@media only screen and (min-width: 600px) {
+			span.commodity-price {
+				display: inline-block;
+			}
+		}
+		/* Purchase other items */
+		#othercommodities {
+			margin-block-start: 5rem;
+			margin-inline: 1rem;
+			text-align: center;
+		}
+		.oc-title {
+			font-family: 'Roboto Slab', serif;
+			position: relative;
+			height: 5rem;
+		}
+		.oc-title h1 {
+			position: absolute;
+			width: 100%;
+		}
+		.oc-title h1:nth-of-type(1) {
+			color: rgba(141, 141, 141, 0.4);
+			top: 0;
+		}
+		.oc-title h1:nth-of-type(2) {
+			top: 10px;
+			color: rgb(49, 49, 49);
+		}
+		.otheritems {
+			display: grid;
+			grid-gap: 0.7rem;
+			grid-template-columns: repeat( 2, 1fr );
+		}
+		.otheritems > div{
+			aspect-ratio: 1/2;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 1rem;
+		}
+		.otheritems img {
+			height: 45%;
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			margin: auto;
+		}
+		.otheritems > div > div:nth-child(2) {
+			flex-grow: 1;
+			font-family: 'Boogaloo', cursive;
+		}
+		.otheritems > div > div:nth-child(2) h1{
+
+		}
+		 @media only screen and (min-width: 700px) {
+		#othercommodities {
+		}
+		.otheritems {
+			margin-inline: 12rem;
+			grid-template-columns: repeat( 4, 200px );
+		}
+	}
+		.open-opacity {
+			opacity: 1;
+		}	
+		.open-translate {
+			transform: translateY(0);
+			transform: translateX(0);
+		}
+		.close-height {
+			height: 0;
+		}		
+		.close-width {
+			width: 0;
+		}
 	</style>
 </head>
 <body>
-<!--- Select the bag that has the selected button attached to it. 
-	- Create a look for the bag just selected.
-	- Compile the the various bags selected into an array.
-	- Create a purchase link for the customers to purchase through. -->
-	<%commodities.forEach(function(commodity){%>
-		<div class="commodity">
-			<div class="L1_2">
-				<img src="data:<%=commodity.img.contentType%>;base64,<%=commodity.img.data.toString('base64')%>" alt="<%=commodity.name%>" height="80%" width="80%"/>
-			</div>
-			<div class="L1_1">
-				<h3><%=commodity.name%></h3>
-				<em><%=commodity.price%></em>
-				<p><%=commodity.description%></p>
-			</div>
 
-			<form action="/delete-from-cart?_method=delete" method="post">
-				<button name='id' value="<%=commodity._id%>">
-					Delete from cart
-				</button>
-			</form>
+	<%if(!commodities[0] || !commodities){%>	
+		<div id="errhandl">
+			<div class="bag-image"><img src="Butterfly/assets/img/empty cart.svg" alt=""></div>
+			<h1>Your Cart is empty</h1>
+			<p><a href="/#gallery">Please select a bag from the gallery.</a></p>
 		</div>
-	<%})%>
+	<%}else{%>
+		<div class="all-commodities">
+			<div class="CI-P1">
+				<h1>YOUR CART
+					<p><i class="fa-solid fa-circle-exclamation"></i> Click on images to view more info on your bags</p>
+				</h1>
+					<div class="cartitems">
+				<%commodities.forEach(function(commodity){%>
+						<a href="#" class="CI-L1">
+							<img  src="data:<%=commodity.img.contentType%>;base64,<%=commodity.img.data.toString('base64')%>"
+							alt="<%=commodity.name%>" height="100%" width="100%" />
+						</a>
+				<%})%>
+					</div>				
+			</div>			
+			<div class="itempricecalculator">
+				<div>
+					<h1>
+						<img class='party-popper' src="Butterfly/assets/img/fireworks.png" alt="Party Popper">
+						Thank you for your patronage.
+					</h1>
+				<b>
+					<p>Your total purchase amounts to <span class="commodity-price"><i class="fa-solid fa-naira-sign"></i>						
+						<%let amnt = 0;%>
+						<%commodities.forEach(function(comm){%>
+						<%amnt += Number(comm.price);%>
+					<%})%>
+				<%=amnt%></span></p>
+				</b>
+				</div>
+			</div>
+		</div>
+		<section data-aos="fade-right" id="othercommodities">
+				<div class="oc-title">
+					<h1 style="z-index: -1;">LET'S GET</h1>
+					<h1>SOME MORE</h1>
+				</div>
+				<div class="otheritems">
+					<%othercommodities.forEach(function(comm){%>
+						<div>
+							<img src="data:<%=comm.img.contentType%>;base64,<%=comm.img.data.toString('base64')%>" alt="<%=comm.name%>" width="100%" />
+							<div>
+								<h1><%=comm.name%></h1>
+								<em><%=comm.price%></em>
+							</div>
+						</div>
+					<%})%>
+				</div>
+		</section>
+
+	<%}%>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script src="Assets/cart.js">
+	</script>
 </body>
+</html>

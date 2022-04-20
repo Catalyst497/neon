@@ -1,21 +1,25 @@
-<%- include("partials/header") %>
-<head>
-	<style type="text/css">
-		body{
-			background:#030802;
-			padding-top: 75px;
-		}
-	</style>
-</head>
-<div class="login">
-	Please Login
-	<form action="/login" method="post">
-	<p>
-		<input type="text" name="username" placeholder="Name" required>
-	</p>
-	<p> 
-		<input type="password" name="password" placeholder="password" required>
-	</p>
-		<input  type="Submit" class="btn btn-primary">
-</form>
-</div>
+<%- include("partials/part-header") %>
+<body>
+	<section id="main">
+		<div class="logo">
+			<div>
+				<h1>Neon Creatives</h1>
+				<em>. . . Creativity at it's peak</em>
+			</div>
+		</div>
+		<div class="form login">
+			<h3>Please Login to continue.</h3>
+			<form action="/login" method="post">
+				<p>
+					<input type="text" name="username" placeholder="Name" required>
+				</p>
+				<p>
+					<input type="password" name="password" placeholder="password" required>
+				</p>
+				<input type="Submit" class="">
+			</form>
+		</div>
+	</section>
+</body>
+</html>
+

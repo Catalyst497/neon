@@ -14,25 +14,24 @@ let router = require("express").Router(),
 
 router.get("/", function (req, res) {
   clientIp = requestIp.getClientIp(req);
-  Buyer.find({ ipAddress: clientIp }, function (err, buyers) {
-    if (buyers == []) {
-      Buyer.create({ ipAddress: clientIp }, function (err, buyer) {
-        Images.find({}, function (err, images) {
-          if (err) {
-            console.log(err);
-          } else {
-            res.render("Home Page", { images: images });
-          }
-        });
-      });
-    } else {
+  Buyer.find({ipAddress: clientIp}, function (err, currentBuyers) {
+    if(!currentBuyers.length){
+      Buyer.create({ ipAddress: clientIp });
       Images.find({}, function (err, images) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.render("Home Page", { images: images });
-        }
-      });
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("Home Page", { images: images.reverse() });
+      }
+    });
+    }else{
+      Images.find({}, function (err, images) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("Home Page", { images: images.reverse() });
+      }
+    });
     }
   });
 });
@@ -41,17 +40,24 @@ router.post("/", function (req, res) {
     Buyer.find({ ipAddress: clientIp }, function (err, buyers) {
       buyers[0].cart.unshift(img);
       buyers[0].save();
-      res.redirect("/cart");
+      req.flash('added', 'Successfully Added to Cart');
+      res.redirect('/#gallery');
     });
   });
 });
 router.get("/cart", function (req, res) {
-  Buyer.find({ ipAddress: clientIp })
+  clientIp = requestIp.getClientIp(req);
+  Images.find({}, function(err, imgs){
+    Buyer.find({ ipAddress: clientIp })
     .populate("cart")
     .exec(function (err, buyers) {
-      if (err) console.log(err);
-      res.render("cart", { commodities: buyers[0].cart });
+      let commodities = buyers[0].cart;
+      if (err) {
+        console.log(err);
+      }
+      res.render("cart", { commodities: commodities, othercommodities: imgs });
     });
+  })
 });
 router.delete("/delete-from-cart", function (req, res) {
   Buyer.find({ ipAddress: clientIp }, function (err, buyer) {
@@ -103,17 +109,25 @@ router.post("/edit", isLoggedIn, upload.single("image"), function (req, res) {
       ),
       contentType: "image/png",
     },
-    price: req.body.price,
+    price: (!Number(req.body.price[0])) ? req.body.price.slice(1) : req.body.price,
     description: req.body.description,
     purchaseUrl: req.body.purchaseUrl,
   };
-  Images.create(obj, function (err, item) {
-    if (err) {
+  Images.create(obj, (err, bag) => {
+    if(err){
       console.log(err);
-    } else {
-      res.redirect("/");
+    }else{
+      console.log(bag);
+      res.redirect('/#gallery');
     }
-  });
+  })
+  // Images.create(obj, function (err, item) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.redirect("/");
+  //   }
+  // });
 });
 router.delete("/:id", isLoggedIn, function (req, res) {
   Images.findByIdAndDelete(req.params.id, function (err, camp) {
