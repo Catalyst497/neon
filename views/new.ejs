@@ -1,0 +1,103 @@
+<%- include("partials/part-header") %>
+<body>
+	<!--TO-DO
+		- Create forms for adding both new bags and new shoes
+		- Style the page to look good since the styling is now going to be different from the login page a bit.
+		- Add description to the things the owner has to put in to the site. 
+	-->
+	<section class="new-logo">
+		<div>
+			<a href="/" class="home">Neon Creatives</a>
+			<em>. . . Creativity at it's peak</em>
+		</div>
+	</section>
+	<section class="new">
+		<div class="form new-bag">
+			<h3>Add a new bag item here</h3>
+			<form action="/new/bag" method="POST" enctype="multipart/form-data">
+					<p>
+						<input type="text" name="name" placeholder="Name of Bag here...">
+					</p>
+					<p>
+						<label>Upload Bag image here</label>
+						<input type="file" class="image" name="image" accept=".jpg, .jpeg, .png" required>
+						<img class="input" src="" height="200px" width="200px" alt="Your Image preview will show here">
+					</p>
+					<p>
+						<input type="number" name="price" placeholder="Price of bag here...">
+					</p>
+					<p>
+					<input type="text" name= 'description' placeholder= 'Description'>
+				</p>
+					<p>
+						<input type="submit" name="">
+					</p>
+			</form>
+		</div>
+	</section>
+	<section class="new">
+		<div class="form new-shoe">
+			<h3>Add a new shoe item here</h3>
+			<form action="/new/shoe" method="POST" enctype="multipart/form-data">
+				<p>
+					<input type="text" name="name" placeholder="Name of Bag here...">
+				</p>
+				<p>
+					<label>Upload Shoe image here</label>
+					<input type="file" class="image" name="image" accept=".jpg, .jpeg, .png" required>
+					<img class="input" src="" alt="Your Image preview will show here">
+				</p>
+				<p>
+					<input type="number" name="price" placeholder="Price of bag here...">
+				</p>
+				<p>
+					<input type="text" name= 'description' placeholder= 'Description'>
+				</p>
+				<p>
+					<input type="submit" name="">
+				</p>
+			</form>
+		</div>
+	</section>
+	<script>
+		const forms = document.querySelectorAll('.form');
+		forms.forEach((form) => {
+			const fileSelector = form.querySelector('.image');
+			const imgInput = form.querySelector('img.input');
+			fileSelector.addEventListener('change', (e) => {
+			let fileList = e.target.files;
+			let file = fileList[0];
+			function readImage (file){
+			if (file.type && !file.type.startsWith('image/')) {
+    		console.log('File is not an image.', file.type, file);
+    		return;
+  			}else {
+				   const reader = new FileReader();
+					reader.addEventListener('load', (event) => {
+					imgInput.src = event.target.result;
+					});
+					reader.readAsDataURL(file);
+			  }
+			}
+			readImage(file);
+			})
+		})
+		// fileSelector.addEventListener('change', (event) => {
+		// 	const fileList = event.target.files;
+		// 	let file = fileList[0];
+		// 	function readImage (file){
+		// 	if (file.type && !file.type.startsWith('image/')) {
+    	// 	console.log('File is not an image.', file.type, file);
+    	// 	return;
+  		// 	}else {
+		// 		   const reader = new FileReader();
+		// 			reader.addEventListener('load', (event) => {
+		// 				imgInput.src = event.target.result;
+		// 			});
+		// 			reader.readAsDataURL(file);
+		// 	  }
+		// 	}
+		// 	readImage(file);
+		// })
+	</script>
+</body>

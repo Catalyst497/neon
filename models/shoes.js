@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-var imageSchema = new mongoose.Schema({
+var shoeSchema = new mongoose.Schema({
 	id:{
 		type: mongoose.Types.ObjectId,
-		ref:"Image"
+		ref:"Shoe"
 	},
 	name: String,
     img:
@@ -14,12 +14,6 @@ var imageSchema = new mongoose.Schema({
     price: Number,
     description: String,
 });
-Image = mongoose.model("Image",imageSchema);
-module.exports = Image;
-
-
-
-
-
-
+Shoe = mongoose.model("Shoe", shoeSchema);
+module.exports = Shoe;
 

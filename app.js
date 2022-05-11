@@ -14,11 +14,9 @@ let express = require("express");
   (methodOverride = require("method-override")),
   (fs = require("fs")),
   (path = require("path"));
-require("dotenv/config");
-const URL =
-  "mongodb+srv://Catalyst:Randomshap197@neon.chpcu.mongodb.net/Neon?retryWrites=true&w=majority";
-// const useless =
-//   "mongodb://Catalyst:Randomshap197@neon.chpcu.mongodb.net/Neon?retryWrites=true&w=majority";
+
+require("dotenv").config();
+const URL = process.env.DATABASE_URL;
 mongoose.connect(
   URL,
   {
@@ -62,7 +60,9 @@ app.use(function (req, res, next) {
   res.locals.error = req.flash("error");
   res.locals.success = req.flash("success");
   res.locals.message = req.flash("message");
+  res.locals.deleted = req.flash("deleted");
   res.locals.added = req.flash("added");
+  res.locals.cartMessage = req.flash("cartMessage");
   next();
 });
 

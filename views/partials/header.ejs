@@ -9,13 +9,6 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link type="image/png" href="Butterfly/assets/img/ICO.png" rel="icon" />
     <link href="Butterfly/assets/img/ICO.png" rel="apple-touch-icon" />
-    <!-- Google Fonts -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-      crossorigin="anonymous"
-    /> -->
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
       rel="stylesheet"
@@ -27,7 +20,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Fredoka:wght@400;500&family=Raleway:wght@200&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500&family=Boogaloo&family=Fredoka:wght@400;500&family=Raleway:wght@200&family=Roboto+Mono:wght@500&family=Roboto+Slab:wght@500&family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -38,48 +34,72 @@
     <!-- <link href="Butterfly/assets/css/style.css" rel="stylesheet" /> -->
   </head>
     <body>
-      <%if(added.length > 0){%>
-        <div class="flash added"><%=added%></div>
+      <%if(success.length){%>
+        <div class="flash flash-trans success">
+          <i class="fa-solid fa-check"></i>  <%=success%>
+        </div>
+      <%}%>
+      <%if(message.length){%>
+        <div class="flash flash-trans message">
+        <i class="fa-solid fa-exclamation"></i> <%=message%>
+        </div>
+      <%}%>
+      <%if(deleted.length){%>
+        <div class="flash flash-trans deleted">
+        <i class="fa-solid fa-trash-can"></i> <%=deleted%>
+        </div>
       <%}%>
           <div class="overlay"></div>
           <span class="view-cart">
-            <a href="/cart">
+            <a class="vwc" href="/cart">
               <span class="icon"><i class="fa-solid fa-cart-shopping"></i></span>
               <span class="text">View Cart</span>
             </a>
           </span>
           <div class="omo-mehn">
-            <div class="view-item"></div>
+            <div class="view-item">
+            </div>
           </div>
+          </div>
+          <div class="loading">
+            <div class="logo">
+              <img style="border-radius: 100%; " height="100%" width="100%" src="Butterfly/assets/img/neon-removebg-black.png"
+                alt="">
+            </div>
+          </div>
+          <div class="loading loading-cart" style="display: none;">
+            <div class="logo">
+              <img style="border-radius: 100%; " height="100%" width="100%" src="Butterfly/assets/img/neon-removebg-black.png"
+                alt="">
+            </div>
           </div>
           <header>
             <div class="logo">
               <img src="Butterfly/assets/img/neon-removebg-white.png" class="logo" alt="Logo" />
             </div>
             <div class="items">
-              <div class="item no-top-border"><a href="#">HOME</a></div>
-              <div class="item"><a href="#">ABOUT</a></div>
-              <div class="item has-subitem">
-                <a>SERVICES <i class="fa-solid fa-angle-down"></i></a>
+              <div data-aos="flip-down" class="item no-top-border"><a href="#">HOME</a></div>
+              <div data-aos="flip-down" class="item"><a href="#gallery">SHOP FOR BAGS</a></div>
+              <div data-aos="flip-down" class="item"><a href="#Shoes">SHOP FOR SHOES</a></div>
+              <div data-aos="flip-down" class="item has-subitem">
+                <a>OTHER SERVICES <i class="fa-solid fa-angle-down"></i></a>
                 <ul class="submenu">
                   <li class="subitem">
-                    <a href="https://www.google.com">Online Training</a>
+                    <a href="#footer">Online Training</a>
                   </li>
                   <li class="subitem">
-                    <a href="https://www.google.com">Physical Training</a>
+                    <a href="#footer">Physical Training</a>
                   </li>
                   <li class="subitem">
-                    <a href="https://www.google.com">Private labelling</a>
+                    <a href="#footer">Private labelling</a>
                   </li>
                   <li class="subitem">
-                    <a href="https://www.google.com">Wholesales</a>
+                    <a href="#footer">Wholesales</a>
                   </li>
                 </ul>
               </div>
-              <div class="item"><a href="#">BLOG</a></div>
-              <div class="item"><a href="#">CONTACT</a></div>
+              <div data-aos="flip-down" class="item"><a href="#footer">CONTACT US</a></div>
             </div>
-          
             <div class="toggle">
               <a id="toggle"><i class="fas fa-bars"></i></a>
             </div>

@@ -1,25 +1,36 @@
 "use strict";
-const toggle = document.getElementById("toggle"),
+let toggle = document.getElementById("toggle"),
   headStart = document.querySelector("header"),
-  windowResponse = window.matchMedia("(min-width: 670px)"),
+  windowResponse = window.matchMedia("(max-width: 670px)"),
   hasSubItem = document.querySelector(".has-subitem"),
   subDropdown = document.querySelector(".submenu"),
   viewButton = document.querySelectorAll(".view-good"),
   viewItem = document.querySelector(".view-item"),
   viewChild = document.querySelector(".view-child"),
-  imagesContainer = document.querySelector(".galle-1"),
-  images = document.querySelectorAll(".galle-1-L1"),
+  imagesContainer = document.querySelector(".bag-1"),
+  shoesContainer = document.querySelector(".shoe-1"),
   hImage = document.querySelectorAll(".Himg"),
   closeViewIcon = document.querySelector("i.view"),
   choiceIcon = document.querySelector(".fa-ellipsis-vertical"),
   chooseDisplay = document.querySelector(".choose-display"),
   viewChoice = document.querySelector(".view-choice"),
   viewTypePara = document.querySelector(".viewtype"),
+  images = document.querySelectorAll(".galle-1-L1"),
   imagesSpred = Array.from(images),
+  recentBagList = imagesSpred.slice(0, 6),
+  Shoes = document.querySelectorAll('.galle-S-L1'),
+  ShoesArray = Array.from(Shoes),
+  recentShoeList = ShoesArray.slice(0, 6),
   overlay = document.querySelector(".overlay"),
   showTitle = document.querySelector(".show-title"),
   viewCart = document.querySelector("span.view-cart"),
-  toggleHeader = document.querySelector(".items");
+  cartLinks = document.querySelectorAll(".vwc"),
+  loadingCart = document.querySelector('.loading-cart'),
+  flashMessage = document.querySelector('.flash'),
+  toggleHeader = document.querySelector(".items"),
+  headerItems  = document.querySelectorAll('.item:not(.has-subitem)'),
+  subItems = document.querySelectorAll('.subitem');
+  let loading = document.querySelector('.loading');
 
 
   AOS.init({
@@ -35,7 +46,7 @@ const toggle = document.getElementById("toggle"),
   
 
   // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-  offset: 120, // offset (in px) from the original trigger point
+  offset: 70, // offset (in px) from the original trigger point
   delay: 0, // values from 0 to 3000, with step 50ms
   duration: 500, // values from 0 to 3000, with step 50ms
   easing: 'ease-out', // default easing for AOS animations
@@ -65,65 +76,86 @@ function toggleItem(toggleVictim) {
   }
 }
 images.forEach((image) => image.classList.add("show-the-stuff"));
-toggleHeader.classList.remove("toggle-wahala");
-toggle.addEventListener("click", function () {
-  if (!toggle.classList.contains("active")) {
-    toggle.innerHTML = "<i class='fas fa-times'></i>";
-    toggle.classList.add("active");
-    toggleHeader.classList.add("toggle-wahala");
-  } else {
-    toggle.innerHTML = "<i class='fas fa-bars'></i>";
-    toggle.classList.remove("active");
-    toggleHeader.classList.remove("toggle-wahala");
-  }
-});
 
-//Page width styling
+
+
+//Header styling and it's complications
 function response(x) {
   if (x.matches) {
-    document.querySelector(".items").classList.add("toggle-wahala");
-  }
-   else {
-    document.querySelector(".items").classList.remove("toggle-wahala");
+    toggleHeader.classList.remove("toggle-wahala");
+    function OAndCHeader(effector){
+      effector.addEventListener("click", function () {
+      if (!toggle.classList.contains("active")) {
+        toggle.innerHTML = "<i class='fas fa-times'></i>";
+        toggle.classList.add("active");
+        toggleHeader.classList.add("toggle-wahala");
+      } else {
+        toggle.innerHTML = "<i class='fas fa-bars'></i>";
+        toggle.classList.remove("active");
+        toggleHeader.classList.remove("toggle-wahala");
+      }
+    })
+    }
+    OAndCHeader(toggle);
+    function eachHeadItem(itemArray) {
+      itemArray.forEach((item) => {
+        OAndCHeader(item);
+      })
+    }
+    eachHeadItem(headerItems);
+    eachHeadItem(subItems);
+    hasSubItem.addEventListener("click", function () {
+      subDropdown.classList.toggle("show-subitems");
+    });
+  }else {
+     document.querySelector(".items").classList.add("toggle-wahala");
   }
 }
 windowResponse.onchange = response;
 response(windowResponse);
-hasSubItem.addEventListener("click", function () {
-  subDropdown.classList.toggle("show-subitems");
-});
+
+
+function fitImages(cont, list){
+  cont.innerHTML = '';
+  list.forEach(function(item){
+    cont.insertAdjacentHTML("beforeend", item.outerHTML);
+  });
+}
+// fitImages(imagesContainer, recentBagList);
+// fitImages(shoesContainer, recentShoeList);
 
 //Show Page
-function openViewPage(cont) {
-  cont.querySelectorAll(".galle-1-L1").forEach(function (image, i, arr) {
-    let addCartForm = image.querySelector('form.add-to-cart');
+function openView (contItems) {
+  contItems.forEach(function (image, i, arr) {
     function viewEffect() {
-    let viewData = `
-      <div>
-      <div class="view-image">${image.querySelector("img.Himg").outerHTML}</div>
-        <ul>
-          <div class="show-title"><b> ${
-            image.querySelector("h4.name").innerHTML
-          }</b></div>
-          <li><b>Spec:</b> </li>
-          <li><b>Price:</b> ${image.querySelector(".price").innerHTML}</li>
-          </ul>
-          ${addCartForm.outerHTML}
-          <a class= 'go-to-cart' href="/cart">View Cart</a>
-          </div>`;
       viewItem.innerHTML = "";
-      viewItem.insertAdjacentHTML("afterbegin", viewData);
+      let modalContent = image.querySelector('.modal').innerHTML
+      viewItem.insertAdjacentHTML("afterbegin", modalContent);
       view();
+      // Addition and Subtraction of quantity
+      let minus = viewItem.querySelector('.minus'),
+      add = viewItem.querySelector('.plus'),
+      QN = viewItem.querySelector('.number');
+      minus.addEventListener('click', function(){
+        QN.value--;
+        QN.value = QN.value < 1 ? 1 : Math.round(QN.value);
+      })
+      add.addEventListener('click', function(){
+        QN.value++;
+        QN.value = QN.value < 1 ? 1 : Math.round(QN.value);
+      })
+      image.querySelector('.vwc').addEventListener('click', function(){
+          loadingCart.style.display = 'flex';
+        })
     }
+
   function view() {
     viewItem.classList.add("show-translate");
-    viewItem.querySelector('form.add-to-cart').setAttribute('style', 'display: block');
   setTimeout(() => {
     overlay.classList.add("open-display");
-  }, 300);
+  }, 150);
 }
   function closeView() {
-  image.querySelector('form.add-to-cart').setAttribute('style', 'display: none');
   viewItem.classList.remove("show-translate");
   overlay.classList.remove("open-display");
 }
@@ -135,57 +167,21 @@ function openViewPage(cont) {
       viewEffect();
     });
   });
-}
+};
+openView(imagesContainer.querySelectorAll(".galle-1-L1"));
+openView(shoesContainer.querySelectorAll(".galle-S-L1"));
 
-//Choose how to show bags
-let viewType;
-let recentBaglist = imagesSpred.slice(0, 4);
-let delaySeconds = 50;
-let imageCont;
-let usableStuff;
-function imageAmount(image) {
-  imagesContainer.insertAdjacentHTML("beforeend", image.outerHTML);
-}
-(function () {
-  imagesContainer.classList.remove("show-the-stuff");
-  imagesContainer.innerHTML = "";
-  recentBaglist.forEach(imageAmount);
-  setTimeout(() => {
-    imagesContainer.classList.add("show-the-stuff");
-  }, 400);
-})();
-openViewPage(imagesContainer);
-function changeView() {
-  toggleItem(chooseDisplay);
-  setTimeout(() => {
-    viewTypePara.textContent = viewChoice.textContent;
-    viewType =
-      viewTypePara.textContent === "View All" ? "Recently Added" : "View All";
-    viewChoice.textContent = viewType;
-    let usableList;
-    if (viewTypePara.textContent === "Recently Added") {
-      imagesContainer.classList.remove("show-the-stuff");
-      imagesContainer.innerHTML = "";
-      usableList = recentBaglist;
-    } else {
-      imagesContainer.classList.remove("show-the-stuff");
-      imagesContainer.innerHTML = "";
-      usableList = imagesSpred;
-    }
-    usableList.forEach(imageAmount);
-    setTimeout(() => {
-      imagesContainer.classList.add("show-the-stuff");
-    }, 400);
-    openViewPage(imagesContainer);
-  }, 500);
-}
-choiceIcon.addEventListener("click", function () {
-  toggleItem(chooseDisplay);
-});
-viewChoice.addEventListener("click", changeView);
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape" && viewItem.classList.contains("view-full")) {
-    closeView();
-  }
-});
+window.addEventListener('load', function () {
+    loading.style.display = "none";
+   setTimeout(() => {
+      flashMessage.classList.remove('flash-trans');
+   }, 5000)
+})
+cartLinks.forEach(function(link){
+  link.addEventListener('click', function(){
+    loadingCart.style.display = 'flex';
+  })
+})
+
+
 
