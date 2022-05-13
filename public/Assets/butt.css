@@ -84,7 +84,7 @@ h4 #logo {
 @media only screen and (max-width: 700px) {
     .flash {
         font-size: 0.7rem;
-        width: 5rem;
+        width: 8rem;
         background: #ffffffee;
     }
     .flash i {
@@ -128,7 +128,7 @@ h4 #logo {
     font-size: 0.9rem;
   }
 }
-/* Header*/
+/* HEADER*/
 header {
   position: fixed;
   top: 0;
@@ -242,6 +242,7 @@ header img.logo {
       flex-direction: row;
       width: auto;
       height: auto;
+      overflow: visible;
     }
     .item {
       width: auto;
@@ -256,19 +257,20 @@ header img.logo {
     .submenu {
       left: 0;
       right: 0;
-      top: 3rem;
+      top: 4rem;
       visibility: hidden;
-      border-radius: 0 0 7px 7px;
+      border-radius: 7px 7px 7px 7px ;
       position: absolute;
       z-index: 10;
       opacity: 0;
-      max-height: 0;;
+      max-height: 0;
+      padding-top: 1rem;
       padding-bottom: 1rem;
       transition: opacity 500ms;
     }
     
     .has-subitem:hover .submenu, .submenu:hover {
-      max-height: 300px;
+      max-height: 500px;
       height: auto;
       position: absolute;
       background-image: linear-gradient(to right, rgb(70, 70, 70), rgb(139, 139, 139));
@@ -348,7 +350,6 @@ header img.logo {
   }
 }
 .transparent-beauty {
-  z-index: 2;
   position: absolute;
   display: flex;
   text-align: center;
@@ -493,6 +494,46 @@ header img.logo {
   width: 1.7rem;
 }
 }
+
+
+/* ABOUT */
+section#about {
+  text-align: center;
+  margin: 4rem 0;
+  margin-top: 7rem;
+  background-color: #e8e8e8;
+}
+#about h1 {
+  font-family: 'Fredoka', cursive;
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+#about .content {
+  font-size:1rem;
+  font-family: 'Raleway';
+  width: 60%;
+  font-weight: 900;
+  margin: 1rem auto;
+}
+#about hr {
+  border-top: 2px solid gray;
+  margin: 1.2rem auto;
+  width: 3.8rem;
+}
+@media only screen and (min-width: 670px) {
+section#about {
+  position: relative;
+  z-index: 3;
+  margin-top: -1rem;
+  margin-left: 7rem;
+  margin-right: 7rem;
+  margin-bottom: 0;
+  box-shadow: 0 6px 10px -6px gray;
+}
+}
+
 
 /*BAG GALLERY*/
 .gallery .section-title {

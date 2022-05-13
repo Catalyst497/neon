@@ -55,7 +55,7 @@ a {
 @media only screen and (max-width: 700px) {
     .flash {
         font-size: 0.7rem;
-        width: 5rem;
+        width: 8rem;
         background: #ffffffee;
     }
     .flash i {
@@ -83,7 +83,7 @@ a {
 
 #errhandl div.bag-image {
     justify-content: center;
-    height: 30rem;
+    height: 20rem;
     overflow: hidden;
 }
 
