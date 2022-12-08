@@ -72,6 +72,7 @@ app.use(routes);
 app.get('/*', function(req, res){
   res.render('error');
 })
-app.listen(process.env.PORT || 400, "0.0.0.0", function () {
-  console.log("You are welcome to naija");
+const PORT = process.env.PORT || 400;
+app.listen(PORT, "0.0.0.0", function () {
+  console.log(`App running on port ${PORT}`);
 });
